@@ -1,0 +1,39 @@
+include ../footer_header/header
+  body.padd_color
+    if(user)
+      include ../footer_header/menu
+      .container.text-center.bradcamps_padding
+        .bradcamps
+          a(href="/panou") 
+            span Panou /
+          a(href="#")
+            span Edit Customer
+      .container.container_fullheight_percentage
+        .form_content_create
+          form.editClientForm.form_style_nov
+              .form-group
+                  input#updateClientids(type="hidden" value=`${client._id}`)
+              .form-group
+                  label(for='servicename_create') Nume Client
+                  input#clientname_edit.form-control(type='text', name="Name_Client",value=`${client.name}`)
+              .form-group
+                  label(for='facebookpage_create') Facebook Page
+                  input#facebookpage_edit.form-control(type='text', name="Facebook_Page",value=`${client.fbPageName}`)
+              .form-group
+                  label(for='facebookpagelink_create') Facebook Page Link
+                  input#facebookpagelink_edit.form-control(type='text', name="Facebook_Page",value=`${client.fbPageLink}`)
+              .form-group
+                  label(for='websitename') Website Name
+                  input#websitename_edit.form-control(type='text', name="Website_Name",value=`${client.clientWebsiteName}`)
+              .form-group
+                  label(for='websitelink_create') Website Link
+                  input#websitelink_edit.form-control(type='text', name="Website_Link",value=`${client.clientWebsiteeLink}`)
+                  br
+              button.btn.btn--green.loginButton(type='submit') Salveaza    
+          form.deleteClientForm.deleteForm
+            .form-group
+              input#deleteServiceHidde(type="hidden" value=`${client._id}`)
+            button.btn.loginButton.btn-danger(type='submit') Sterge Clientul
+    else
+      h1 You are not log in
+    include ../footer_header/footer

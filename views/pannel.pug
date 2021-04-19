@@ -1,0 +1,86 @@
+include ./footer_header/header
+body.padd_color.panou_special_body
+    if(user)
+      include ./footer_header/menu
+      .container-fluid.global_draggable
+        .row
+          .col-md-3.services_areas
+            .service_title_area 
+              h2 Servicii 
+              input(type="text" id="pannel_input_search" placeholder="Search for customer.." title="Type in a name") 
+              button.button_close_style#close_services_MOB
+                i.fa.fa-arrow-left    
+            #services_socialmedia.services_area
+              each service in services
+                  .card
+                      if(user.role === 'administrator' || user.role === 'editor')
+                        form
+                          input(type="hidden" value = `${service._id}`).add_id_bydeff
+                        a.edit_service_icons(href=`get-service/${service._id}` target="_self")
+                          i.fa.fa-pencil-square-o( aria-hidden="true")
+                      .card-body
+                          h5.card-title.title_draggable_title= service.serviceName
+                          p.card-text.text_drag_text= service.descriereServiciu
+          .col-md-9.grid-item.height_body_grid      
+            .items_carousel_draggable
+              each client in clients.reverse()
+                .item.dropped
+                  .user_ui_id
+                    .row(style="margin-right: 0px;margin-left: 0px;")
+                      .col-md-11.adaptabil_mobile.searchname(style="padding-left:0;padding-right:0;")
+                        h6.name
+                          strong Nume:
+                          = client.name  
+                        h6
+                          strong FB:
+                          a(href=`${client.fbPageLink}`,target="_blank").anchor_pannou_drag= client.fbPageName
+                        h6
+                          strong Website:
+                          a(href=`${client.clientWebsiteeLink}`, target="_blank").anchor_pannou_drag= client.clientWebsiteName
+                      .col-md-1.adaptabil_mobile_small.text-right(style="padding-left:0;padding-right:0;")
+                        if(user.role === 'administrator' || user.role === 'editor')
+                          a.edit_client(href=`get-client/${client._id}` target="_self")
+                            i.fa.fa-pencil-square-o( aria-hidden="true")
+                  .clientservice__box
+                    each serv in client.services
+                        .card.addRemoveFunction  
+                          .card_header.row
+                            .col-md-8.title.addaptable_dragg_big
+                              h5.card-title.title_draggable_title= serv.serviceName
+                            .col-md-4.closebutton.addaptable_dragg_small
+                              if(user.role === 'administrator' || user.role === 'editor')
+                                form
+                                  .form-group                   
+                                    input(type="hidden" value=`${serv._id}`)
+                                  button.deleteForm_client-existingService( type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                    span(aria-hidden="true") &times; 
+                          .card-body
+                            p.card-text.text_drag_text(style="word-wrap: break-word!important;")= serv.descriereServiciu
+
+                  if(user.role === 'administrator' || user.role === 'editor')          
+                    .addService.row
+                      .col-md-5.addaptable_mobil_equal(style="padding-left:25px;padding-right:0")
+                        span.desktop_addService.actualizeaza_user.add_service-admin(onclick=`document.getElementById('${client._id}_fnc').style.display='block'`) Adauga Serviciu
+                        span.mobile_addService.actualizeaza_user(onclick=`document.getElementById('${client._id}_fnc').style.display='block'`) Adauga Serviciu
+                      .col-md-7.addaptable_mobil_equal
+                        form.quicksave
+                          input(type="hidden" value=`${client._id}`)
+                          button.salveaza_modificarile(type='submit')  Salveaza Modificarile          
+                    div.addserviceto_CL(id=`${client._id}_fnc`)
+                      .close--addservice--card  
+                        button.btn.close_tab_draggula(style="font-size: 1.5rem;font-weight: 700;line-height: 1;color: #000;text-shadow: 0 1px 0 #fff;" onclick=`document.getElementById('${client._id}_fnc').style.display='none'`)    
+                          span(aria-hidden="true") &times;
+                      div.client_service_area
+                        div.createMobilCard
+                          select.select---mobile--service.form-control
+                            option(selected) Choice a service.
+                            each options in services
+                              option(value=`${options._id}`)= options.serviceName
+                      form.updateCL_cards_info
+                        input(type="hidden" value=`${client._id}`)
+                        button.salveaza_modificarile(type='submit')  Salveaza 
+                  else 
+                    .addService.row     
+    else
+      h1 You are not log in
+    include ./footer_header/footer

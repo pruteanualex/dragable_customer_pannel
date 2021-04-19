@@ -1,0 +1,29 @@
+include ../footer_header/header
+  body.padd_color
+    if(user)
+      include ../footer_header/menu
+      .container.text-center.bradcamps_padding
+        .bradcamps
+          a(href="/panou") 
+            span Panou /
+          a(href="#")
+            span Edit Service
+      .container.container_fullheight.add_padding_bottom
+        .form_content_create
+          form.editServiceForm.form_style_nov
+              .form-group
+                  input#editServid(type="hidden" value=`${serviceid._id}`)
+              .form-group
+                  label(for='servicename_create') Nume Serviciu
+                  input#servicename_edit.form-control(type='text', name="serviceName", value=`${serviceid.serviceName}`)
+              .form-group
+                  label(for='serviceDescription') Descriere Serviciu
+                  textarea#serviceDescription_edit.form-control(rows='6',name="descriereServiciu")= serviceid.descriereServiciu
+              button.btn.btn--green.loginButton(type='submit') Salveaza
+          form.deleteService
+            .form-group
+              input#deleteServiceHidde(type="hidden" value=`${serviceid._id}`)
+            button.btn.loginButton.btn-danger(type='submit') Sterge Serviciul   
+    else
+        h1 You are not log in
+    include ../footer_header/footer

@@ -1,0 +1,32 @@
+include ../footer_header/header
+body.padd_color
+  if(user)
+    include ../footer_header/menu
+    .container.text-center.bradcamps_padding
+      .bradcamps
+        a(href="/panou") 
+          span Panou /
+        a(href="#")
+          span Create Customer 
+    .container.container_fullheight_percentage
+      .form_content_create
+        form.createClientForm.form_style_nov 
+            .form-group
+              label(for='servicename_create') Nume Client
+              input#clientname_create.form-control(type='text', name="Name_Client",placeholder='Nume Client')
+            .form-group
+              label(for='facebookpage_create') Facebook Page
+              input#facebookpage_create.form-control(type='text', name="Facebook_Page",placeholder='Facebook Page')
+            .form-group
+              label(for='facebookpagelink_create') Facebook Page Link
+              input#facebookpagelink_create.form-control(type='text', name="Facebook_Page",placeholder='Facebook Page Link')
+            .form-group
+              label(for='websitename') Website Name
+              input#websitename.form-control(type='text', name="Website_Name",placeholder='Wbsite Name')
+            .form-group
+              label(for='websitelink_create') Website Link
+              input#websitelink_create.form-control(type='text', name="Website_Link",placeholder='Wbsite Link')
+            button.btn.btn--green.loginButton(type='submit') Trimite
+  else
+      h1 You are not log in
+  include ../footer_header/footer

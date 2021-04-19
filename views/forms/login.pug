@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title Social Media Pannel
+    meta(charset='UTF-8')
+    meta(name='description', content='Free Web tutorials')
+    meta(name='keywords', content='HTML, CSS, JavaScript')
+    meta(name='author', content='John Doe')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='shortcut icon', type='image/x-icon', href='../img/nodejs-logo-FBE122E377-seeklogo.com.png')
+    link(rel='stylesheet', href='../css/bootstrap.css')
+    link(rel='stylesheet', href='../css/style.css')
+  body.forms_body
+    .container.container_fullheight.container_login
+      if(user)
+        .login_aleready.text-center(style="background-color:#fff;padding-top: 15px;padding-bottom: 15px;")
+          h4.heading-secondary  Redirect to your account
+          script.
+              window.location.href = '/panou';
+
+      .login-form  
+        h2.heading-secondary.ma-bt-lg Log into your account 
+        form.login_platform_form.form_style_nov
+          .form-group
+            label(for='login_email_adress') Email Adress
+            input#login_email_adress.form-control(type='email', name="Email_Adress",placeholder=' Email Adress')
+          .form-group
+            label(for='login_user_password') Password
+            input#login_user_password.form-control(type='password', name="Password",placeholder='Password' minlength="8")
+          button.btn.btn--green.loginButton(type='submit') Log In
+        .forgott_pawwrod
+          a.forgot_link(href="/forgot-password") 
+            | Forgot Password  
+    script(src="/socket.io/socket.io.js")       
+    script(src='../js/bundle.js')

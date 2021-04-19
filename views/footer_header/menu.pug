@@ -1,0 +1,62 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.menu_draggable_app_desktop
+    a.navbar-brand.d-lg-none(href='#')
+        img.logo_aplicatie(src="../img/nodejs-logo-FBE122E377-seeklogo.com.png")
+    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#draggablePannel', aria-controls='draggablePannel', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+
+    #draggablePannel.collapse.navbar-collapse.justify-content-between
+        a.navbar-brand.d-none.d-lg-block(href='/panou')
+            img.logo_aplicatie(src="../img/nodejs-logo-FBE122E377-seeklogo.com.png")
+        ul.navbar-nav
+            li.nav-item
+                a(class=(title === 'Social Media Pannel' ? 'nav-link active' : 'nav-link'), href='/panou')
+                    | Panou 
+                    span.sr-only (current)
+            if(user.role === 'administrator' || user.role === 'editor')         
+                li.nav-item
+                    a(class=(title === 'Create Service' ? 'nav-link active' : 'nav-link') ,href='/form-service') Create Service
+                li.nav-item
+                    a(class=(title === 'Create Client' ? 'nav-link active' : 'nav-link'),href='/form-client') Create Client        
+            if(user.role === 'administrator')
+                li.nav-item
+                    a(class=(title === 'Create User' ? 'nav-link active' : 'nav-link') ,href='/create-users') Create User
+                li.nav-item
+                    a(class=(title === 'Get All Users' ? 'nav-link active' : 'nav-link') ,href='/get-al-users') Get All Users
+            li.nav-item.user_identity_desktop
+                a(class=(title === 'My Account' ? 'nav-link active' : 'nav-link') ,href='/account-settings')= user.name
+            li.nav-item.userDate
+                button.logoutvalue_platform.btn.btn.btn--green  Log Out 
+
+nav.mobile_navbar_about_user.navbar-light.bg-light
+    .logo_mobile_user
+        img.logo_aplicatie(src="../img/nodejs-logo-FBE122E377-seeklogo.com.png")
+    .menu_buton_mobile.text-right
+        button.navbar-toggler.open_menu
+            span.navbar-toggler-icon
+            
+#mobile_menu.user_mobile_menu
+    a.close--btn(href="javascript:void(0)") &times;
+    .about_user
+        a(href="javascript:void(0)")= user.name
+        a(href="javascript:void(0)")= user.role
+    .link_by_role    
+        a(href="/account-settings") Account Settings
+        if(user.role === 'administrator')
+            a(href="/create-users") Create User
+            a(href="/get-al-users") Get All Users
+    .logOutMobile
+        button.logoutvalue_platform_mobile.btn.btn.btn--green  Log Out 
+if(user.role === 'administrator' || user.role === 'editor') 
+    .bottom_hiperlinks_menu_mobile
+        a(class=(title === 'Social Media Pannel' ? 'mob_link_div mob_link_div_active_mob' : 'mob_link_div'), href='/panou')
+            i.fa.fa-home(aria-hidden="true") 
+            span Panou   
+        a(class=(title === 'Create Client' ? 'mob_link_div mob_link_div_active_mob' : 'mob_link_div'),href='/form-client')
+            i.fa.fa-user(aria-hidden="true") 
+            span Create Client  
+        a(class=(title === 'Create Service' ? 'mob_link_div mob_link_div_active_mob' : 'mob_link_div'),href='/form-service') 
+            i.fa.fa-bandcamp(aria-hidden="true")
+            span Create Service  
+//-open services 
+button.openservicesmobile#openservices                 
+    i.fa.fa-arrow-right

@@ -1,0 +1,36 @@
+include ./footer_header/header
+body.padd_color
+    if(user)
+        include ./footer_header/menu
+        .container.text-center.bradcamps_padding
+            .bradcamps
+                a(href="/panou") 
+                    span Panou /
+                a(href="#")
+                    span Create Products
+        div.container-edit.container     
+            .updateUser_container.bordered_update
+                form.createProductsApi.form_style_nov
+                    div.form-group
+                        label(for="create_product_name") Product Name
+                        input(type="text" class="form-control" id="create_product_name")
+                    div.form-group
+                        label(for="create_product_category") Product Category
+                        input(type="text" class="form-control" id="create_product_category")      
+                    div.form-group
+                        label(for="create_product_price") Product Price
+                        input(type="text" class="form-control" id="create_product_price")        
+                    div.form-group
+                        label(for="create_product_image") Product Url Image
+                        input(type="text" class="form-control" id="create_product_image")
+                    div.form-group
+                        label(for="create_product_description") Product Description
+                        textarea(rows="10"  class="form-control" id="create_product_description")    
+                    button.btn.btn--green.loginButton(type="submit") Create Product                
+    else
+      h1 You are not log in
+    include ./footer_header/footer 
+
+
+
+

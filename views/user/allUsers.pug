@@ -1,0 +1,32 @@
+include ../footer_header/header
+body.padd_color
+  if(user)
+    include ../footer_header/menu
+    .container.text-center.bradcamps_padding
+      .bradcamps
+        a(href="/panou") 
+          span Panou /
+        a(href="#")
+          span Get All Users  
+    .container.getAllUsers_container
+      ul.user_list
+        each get_user in panou_user.reverse()
+          li
+            .row
+              .col-md-4.user_data_id
+                span Nume:
+                span= get_user.name
+              .col-md-3.user_data_id
+                span Role:
+                span= get_user.role    
+              .col-md-5.user_data_id
+                span Email:
+                span= get_user.email  
+            .row
+              .col-md-4.button_actualizeaza  
+                a(href=`/get-user-id/${get_user._id}`).actualizeaza_user.btn Actualizeaza
+              .col-md-8   
+  else
+      h1 You are not log in
+  include ../footer_header/footer   
+

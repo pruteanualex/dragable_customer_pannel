@@ -1,0 +1,47 @@
+include ./footer_header/header
+body.padd_color
+    if(user)
+        include ./footer_header/menu
+        .container.text-center.bradcamps_padding
+            .bradcamps
+                a(href="/panou") 
+                    span Panou /
+                a(href="#")
+                    span My Account
+        div.container-edit.container     
+            .updateUser_container.bordered_update
+                .title-form
+                    h4 YOUR ACCOUNT SETTINGS    
+                form.updateUserAccount_byMe.form_style_nov
+                    div.form-group.hidden_form---user 
+                        input(type="hidden" class="form-control" id="account--update_my_id" value=`${user._id}`)
+                    div.form-group
+                        label(for="account--update_my_username") User Name
+                        input(type="text" class="form-control" id="account--update_my_username"  value=`${user.name}`)      
+                    div.form-group  
+                        label(for="account--update_my_email") Email
+                        input(type="email" class="form-control" id="account--update_my_email"  value=`${user.email}`)
+                    button.btn.btn--green.loginButton(type="submit") Save Changes
+            .updateUser_container.bordered_update
+                .title-form
+                    h4 PASSWORD CHANGE    
+                form.updateUserPassword_byMe.form_style_nov
+                    div.form-group.hidden_form---user 
+                        input(type="hidden" class="form-control" id="password--update_my_id" value=`${user._id}`)
+                    div.form-group
+                        label(for="update_current--password") Current password
+                        input(type="password" class="form-control" id="update_current--password"   placeholder="••••••••" required="" minlength="8")      
+                    div.form-group  
+                        label(for="update_current--newpassword") New password
+                        input(type="password" class="form-control" id="update_current--newpassword"   placeholder="••••••••" required="" minlength="8")
+                    div.form-group  
+                        label(for="update_current--confirmnewpassword") Confirm password
+                        input(type="password" class="form-control" id="update_current--confirmnewpassword"   placeholder="••••••••" required="" minlength="8")    
+                    button.btn.btn--green.loginButton(type="submit") Save Changes                  
+    else
+      h1 You are not log in
+    include ./footer_header/footer 
+
+
+
+

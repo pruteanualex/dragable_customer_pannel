@@ -1,0 +1,41 @@
+include ../footer_header/header
+body.padd_color
+    if(user)
+      include ../footer_header/menu
+      .container.text-center.bradcamps_padding
+        .bradcamps
+          a(href="/get-al-users") 
+            span Get All Users /
+          a(href="#")
+            span User 
+      div.container-edit      
+        .container.updateUser_container.bordered_update
+            .title-form
+                h4 USER ACCOUNT SETTINGS    
+            form.updateUserData.form_style_nov
+                div.form-group.hidden_form---user 
+                    input(type="hidden" class="form-control" id="userEditId" value=`${userid._id}`)
+                div.form-group 
+                    label(for="userEditRole") Role
+                    select#userEditRole.form-control
+                        option(selected)= userid.role
+                        option administrator
+                        option editor
+                        option utilizator
+                div.form-group.hidden_form---user 
+                    label(for="userEditName") User Name
+                    input(type="text" class="form-control" id="userEditName" disabled value=`${userid.name}`)      
+                div.form-group  
+                    label(for="userEditEmail") Email
+                    input(type="email" class="form-control" id="userEditEmail" disabled value=`${userid.email}`)
+                button.btn.btn--green.loginButton(type="submit") Save Changes
+        if(user.role === 'administrator') 
+          .container.updateUser_container
+            form.deleteUserByAdmin.text-right
+              input#deleteUserById(type="hidden" value=`${userid._id}`)
+              button.btn.btn-danger.loginButton(type="submit") Delete User   
+
+          
+    else
+      h1 You are not log in
+    include ../footer_header/footer 

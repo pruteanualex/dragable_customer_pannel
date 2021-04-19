@@ -1,0 +1,23 @@
+include ../footer_header/header
+  body.padd_color
+    if(user)
+      include ../footer_header/menu
+      .container.text-center.bradcamps_padding
+        .bradcamps
+          a(href="/panou") 
+            span Panou /
+          a(href="#")
+            span Create Service  
+      .container.container_fullheight.add_padding_bottom
+        .form_content_create
+          form.createServiceForm.form_style_nov
+            .form-group
+              label(for='servicename_create') Nume Serviciu
+              input#servicename_create.form-control(type='text', name="serviceName",placeholder='Service Name')
+            .form-group
+              label(for='serviceDescription') Descriere Serviciu
+              textarea#serviceDescription.form-control(rows='9',name="descriereServiciu")
+            button.btn.btn--green.loginButton(type='submit') Trimite
+    else
+        h1 You are not log in 
+    include ../footer_header/footer

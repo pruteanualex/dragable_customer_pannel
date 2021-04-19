@@ -1,0 +1,36 @@
+include ../footer_header/header
+  body.padd_color
+    if(user)
+      include ../footer_header/menu
+      .container.text-center.bradcamps_padding
+        .bradcamps
+          a(href="/panou") 
+            span Panou /
+          a(href="#")
+            span Create User 
+      .container.container_fullheight_percentage
+        .form_content_create
+          form.addUserTo.form_style_nov 
+            .form-group
+              label(for='create_USER--nane') Nume
+              input#create_USER--nane.form-control(type='text', name="User Name",placeholder='User Name')
+            .form-group
+              label(for='create_USER--email') E-mail
+              input#create_USER--email.form-control(type='email', name="User Email",placeholder='email@nodedeosebit.com')
+            .form-group 
+              label(for="create_USER--role") Role
+              select#create_USER--role.form-control
+                option(selected) Choice Role
+                option administrator
+                option editor
+                option utilizator
+            .form-group
+              label(for='create_USER--password') Password
+              input#create_USER--password.form-control(type='password', minlength="8", name="Password",placeholder='Password')
+            .form-group
+              label(for='create_USER--confirmPassword') Password Confirm
+              input#create_USER--confirmPassword.form-control(type='password',minlength="8", name="Confirm Password",placeholder='Confirm Password')
+            button.btn.btn--green.loginButton(type='submit') Trimite
+    else
+      h1 You are not log in 
+    include ../footer_header/footer 
